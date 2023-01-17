@@ -24,6 +24,7 @@ const Register = () => {
     loginUser,
     setupUser,
   } = useAppContext();
+  
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };

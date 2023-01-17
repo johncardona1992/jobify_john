@@ -74,7 +74,6 @@ const AppProvider = ({ children }) => {
         type: REGISTER_USER_SUCCESS,
         payload: { user, token, location },
       });
-
       addUserToLocalStorage({ user, token, location });
     } catch (error) {
       console.log(error.response);
