@@ -1,7 +1,7 @@
 import React from "react";
 import Wrapper from "../../assets/wrappers/DashboardFormPage";
 import { useAppContext } from "../../context/appContext";
-import { Alert, FormRow } from "../../components";
+import { Alert, FormRow, FormRowSelect } from "../../components";
 
 const AddJob = () => {
   const {
@@ -57,26 +57,19 @@ const AddJob = () => {
             value={jobLocation}
             handleChange={handleJobInput}
           />
-
-          <div className="form-row">
-            <label htmlFor="jobType" className="form-label">
-              job type
-            </label>
-            <select
-              name="jobType"
-              value={jobType}
-              onChange={handleJobInput}
-              className="form-select"
-            >
-              {jobTypeOptions.map((itemValue, index) => {
-                return (
-                  <option key={index} value={itemValue}>
-                    {itemValue}
-                  </option>
-                );
-              })}
-            </select>
-          </div>
+          <FormRowSelect
+            name="status"
+            value={status}
+            handleChange={handleJobInput}
+            listItems={statusOptions}
+          />
+          <FormRowSelect
+            name="jobType"
+            labelText="type"
+            value={jobType}
+            handleChange={handleJobInput}
+            listItems={jobTypeOptions}
+          />
 
           <div className="btn-container">
             <button
