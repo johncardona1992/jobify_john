@@ -18,6 +18,8 @@ import {
   UPDATE_USER_SUCCESS,
   UPDATE_USER_ERROR,
   UPDATE_USER_BEGIN,
+  HANDLE_CHANGE,
+  CLEAR_VALUES,
 } from "./actions";
 import axios from "axios";
 
@@ -211,6 +213,14 @@ const AppProvider = ({ children }) => {
     clearAlert();
   };
 
+  const handleChange = ({ name, value }) => {
+    dispatch({ type: HANDLE_CHANGE, payload: { name, value } });
+  };
+
+  const clearValues = () => {
+    dispatch({ type: CLEAR_VALUES });
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -222,6 +232,8 @@ const AppProvider = ({ children }) => {
         toggleSidebar,
         logoutUser,
         updateUser,
+        handleChange,
+        clearValues,
       }}
     >
       {children}
