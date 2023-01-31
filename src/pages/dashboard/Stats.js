@@ -1,9 +1,22 @@
-import React from 'react'
+import React, { useEffect } from "react";
+import { ChartsContainer, Loading, StatsContainer } from "../../components";
+import { useAppContext } from "../../context/appContext";
 
 const Stats = () => {
-  return (
-    <h1>Stats</h1>
-  )
-}
+  const { showStats, isLoading, monthlyApplications } = useAppContext();
+  useEffect(() => {
+    showStats();
+    if (isLoading) {
+      return <Loading center />;
+    }
+  }, []);
 
-export default Stats
+  return (
+    <>
+      <StatsContainer />
+      {monthlyApplications.length > 0 && <ChartsContainer />}
+    </>
+  );
+};
+
+export default Stats;
